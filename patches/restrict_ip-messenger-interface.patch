@@ -1,0 +1,29 @@
+--- a/src/EventSubscriber/RestrictIpEventSubscriber.php	2026-10-22 15:21:25.732914275 +0300
++++ b/src/EventSubscriber/RestrictIpEventSubscriber.php	2026-10-22 15:21:25.733473110 +0300
+@@ -6,7 +6,7 @@
+ use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+ use Drupal\Core\Extension\ModuleHandlerInterface;
+ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+-use Drupal\Core\Messenger\Messenger;
++use Drupal\Core\Messenger\MessengerInterface;
+ use Drupal\Core\Routing\UrlGeneratorInterface;
+ use Drupal\Core\StringTranslation\StringTranslationTrait;
+ use Drupal\Core\Url;
+@@ -36,7 +36,7 @@
+    *   The Module Handler service.
+    * @param \Drupal\Core\Routing\UrlGeneratorInterface $urlGenerator
+    *   The Url Generator service.
+-   * @param \Drupal\Core\Messenger\Messenger $messenger
++   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+    *   The messenger service object.
+    */
+   public function __construct(
+@@ -45,7 +45,7 @@
+     protected LoggerChannelFactoryInterface $loggerFactory,
+     protected ModuleHandlerInterface $moduleHandler,
+     protected UrlGeneratorInterface $urlGenerator,
+-    protected Messenger $messenger,
++    protected MessengerInterface $messenger,
+   ) {
+   }
+ 

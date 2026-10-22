@@ -1,0 +1,104 @@
+langcode: en
+status: true
+dependencies: {}
+machineName: seeds_site_highlights
+name: 'Seeds site: Highlights'
+required:
+- heading
+props:
+  heading:
+    title: Heading
+    type: string
+    examples:
+    - What we do
+  item1Title:
+    title: Item 1 title
+    type: string
+    examples:
+    - Education
+  item1Text:
+    title: Item 1 text
+    type: string
+    examples:
+    - Programmes that open doors for young people.
+  item2Title:
+    title: Item 2 title
+    type: string
+    examples:
+    - Health
+  item2Text:
+    title: Item 2 text
+    type: string
+    examples:
+    - Community clinics and awareness campaigns.
+  item3Title:
+    title: Item 3 title
+    type: string
+    examples:
+    - Livelihoods
+  item3Text:
+    title: Item 3 text
+    type: string
+    examples:
+    - Training and support for small businesses.
+slots: {}
+js:
+  original: |
+    export default function Highlights(props) {
+      const items = [1, 2, 3]
+        .map((n) => ({ title: props[`item${n}Title`], text: props[`item${n}Text`] }))
+        .filter((item) => item.title);
+      return (
+        <section className="seeds-site-highlights">
+          <h2 className="seeds-site-section-heading">{props.heading}</h2>
+          <div className="seeds-site-highlights__items">
+            {items.map((item) => (
+              <div className="seeds-site-highlights__item" key={item.title}>
+                <h3>{item.title}</h3>
+                {item.text && <p>{item.text}</p>}
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    }
+  compiled: |
+    import { jsx, jsxs } from "react/jsx-runtime";
+    export default function Highlights(props) {
+      const items = [1, 2, 3].map((n) => ({ title: props[`item${n}Title`], text: props[`item${n}Text`] })).filter((item) => item.title);
+      return jsxs("section", { className: "seeds-site-highlights", children: [
+        jsx("h2", { className: "seeds-site-section-heading", children: props.heading }),
+        jsx("div", { className: "seeds-site-highlights__items", children: items.map((item) => jsxs("div", { className: "seeds-site-highlights__item", children: [
+          jsx("h3", { children: item.title }),
+          item.text && jsx("p", { children: item.text })
+        ] }, item.title)) })
+      ] });
+    }
+css:
+  original: |
+    .seeds-site-highlights { padding: 4rem 0 2rem; }
+    .seeds-site-section-heading { font-size: 2rem; margin: 0 0 2rem; text-align: center; }
+    .seeds-site-highlights__items { display: grid; gap: 1.5rem; }
+    @media (min-width: 768px) { .seeds-site-highlights__items { grid-template-columns: repeat(3, 1fr); } }
+    .seeds-site-highlights__item {
+      padding: 2rem;
+      border: 1px solid #e3e8ef;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .seeds-site-highlights__item h3 { margin: 0 0 0.75rem; font-size: 1.25rem; }
+    .seeds-site-highlights__item p { margin: 0; color: #44505c; line-height: 1.6; }
+  compiled: |
+    .seeds-site-highlights { padding: 4rem 0 2rem; }
+    .seeds-site-section-heading { font-size: 2rem; margin: 0 0 2rem; text-align: center; }
+    .seeds-site-highlights__items { display: grid; gap: 1.5rem; }
+    @media (min-width: 768px) { .seeds-site-highlights__items { grid-template-columns: repeat(3, 1fr); } }
+    .seeds-site-highlights__item {
+      padding: 2rem;
+      border: 1px solid #e3e8ef;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .seeds-site-highlights__item h3 { margin: 0 0 0.75rem; font-size: 1.25rem; }
+    .seeds-site-highlights__item p { margin: 0; color: #44505c; line-height: 1.6; }
+dataDependencies: {}

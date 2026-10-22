@@ -1,0 +1,53 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 7448d9ee-5dba-4e97-b7d9-7d1075f662a0
+  bundle: news
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+    6012075c-ff71-4fb8-ad6c-6299f2581c55: media
+    cc8cd296-85a4-409f-9b4c-4ad638a5a17c: taxonomy_term
+default:
+  revision_uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  title:
+    -
+      value: 'Annual report: a year of growth'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /news/annual-report
+      langcode: en
+  field_body:
+    -
+      value: '<p>We reached more people than ever, opened two new offices and launched three programmes.</p><p>This is demo content. Edit it, or remove all demo content from the dashboard when you are ready.</p>'
+      format: basic_editor
+      summary: 'Our annual report shows how far your support has taken our work this year.'
+  field_media:
+    -
+      entity: 6012075c-ff71-4fb8-ad6c-6299f2581c55
+  field_page_url:
+    -
+      value: annual-report
+  field_term:
+    -
+      entity: cc8cd296-85a4-409f-9b4c-4ad638a5a17c

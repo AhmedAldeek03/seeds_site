@@ -1,0 +1,72 @@
+_meta:
+  version: '1.0'
+  entity_type: canvas_page
+  uuid: 2b126d80-311d-4543-b7a5-560f2c4af6fb
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+default:
+  status:
+    -
+      value: true
+  owner:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  title:
+    -
+      value: Home
+  description:
+    -
+      value: 'The home page. Edit it in Canvas.'
+  components:
+    -
+      uuid: 44899205-afc4-45d1-a6e5-bd36a99c892f
+      component_id: js.seeds_site_hero
+      inputs:
+        heading: 'Together, we build stronger communities'
+        text: 'We work with families, schools and local partners to open doors to education, health and opportunity.'
+        buttonText: 'Get in touch'
+        buttonUrl: /contact-us
+    -
+      uuid: f8593fba-6e06-4a24-9040-cedcc3d3810b
+      component_id: js.seeds_site_highlights
+      inputs:
+        heading: 'What we do'
+        item1Title: Education
+        item1Text: 'Scholarships, mentoring and after-school programmes for young people.'
+        item2Title: Health
+        item2Text: 'Community clinics, awareness campaigns and family support.'
+        item3Title: Livelihoods
+        item3Text: 'Training, small grants and advice for local businesses.'
+    -
+      uuid: 6fe24d2b-562b-4b59-894d-0e4e8433c65a
+      component_id: block.views_block.news-block_home
+      inputs:
+        label: 'Latest news'
+        label_display: visible
+        views_label: ''
+    -
+      uuid: 0f0e7902-916a-4c7c-94e1-56bea8e3b736
+      component_id: block.views_block.events-block_home
+      inputs:
+        label: 'Upcoming events'
+        label_display: visible
+        views_label: ''
+    -
+      uuid: 39e3c323-d9a4-4e66-8457-52ed57c27899
+      component_id: js.seeds_site_cta
+      inputs:
+        heading: 'Want to work with us?'
+        text: 'Partners, volunteers and donors make our work possible. We would love to hear from you.'
+        buttonText: 'Contact us'
+        buttonUrl: /contact-us
+  path:
+    -
+      alias: /home
+      langcode: en
+  revision_translation_affected:
+    -
+      value: true
+  metatags:
+    -
+      value: '{"canonical_url":"[canvas_page:url]","description":"[canvas_page:description]","image_src":"[canvas_page:image:entity:field_media_image:entity:url]","title":"[canvas_page:title] | [site:name]"}'

@@ -1,0 +1,80 @@
+langcode: en
+status: true
+dependencies: {}
+machineName: seeds_site_cta
+name: 'Seeds site: Call to action'
+required:
+- heading
+props:
+  heading:
+    title: Heading
+    type: string
+    examples:
+    - Get in touch
+  text:
+    title: Text
+    type: string
+    examples:
+    - Have a question or want to work with us? We would love to hear from you.
+  buttonText:
+    title: Button text
+    type: string
+    examples:
+    - Contact us
+  buttonUrl:
+    title: Button link
+    type: string
+    format: uri-reference
+    examples:
+    - /contact-us
+slots: {}
+js:
+  original: |
+    export default function CallToAction({ heading, text, buttonText, buttonUrl }) {
+      return (
+        <section className="seeds-site-cta">
+          <h2>{heading}</h2>
+          {text && <p>{text}</p>}
+          {buttonText && buttonUrl && (
+            <a className="seeds-site-button seeds-site-button--light" href={buttonUrl}>{buttonText}</a>
+          )}
+        </section>
+      );
+    }
+  compiled: |
+    import { jsx, jsxs } from "react/jsx-runtime";
+    export default function CallToAction({ heading, text, buttonText, buttonUrl }) {
+      return jsxs("section", { className: "seeds-site-cta", children: [
+        jsx("h2", { children: heading }),
+        text && jsx("p", { children: text }),
+        buttonText && buttonUrl && jsx("a", { className: "seeds-site-button seeds-site-button--light", href: buttonUrl, children: buttonText })
+      ] });
+    }
+css:
+  original: |
+    .seeds-site-cta {
+      margin: 3rem 0;
+      padding: 4rem 1.5rem;
+      border-radius: 16px;
+      background: #0f2a44;
+      color: #fff;
+      text-align: center;
+    }
+    .seeds-site-cta h2 { margin: 0 0 1rem; font-size: 2rem; color: #fff; }
+    .seeds-site-cta p { margin: 0 auto 2rem; max-width: 40rem; font-size: 1.15rem; line-height: 1.6; color: #d5dee8; }
+    .seeds-site-button--light { background: #fff; color: #0f2a44; }
+    .seeds-site-button--light:hover, .seeds-site-button--light:focus { background: #e6eef7; color: #0f2a44; }
+  compiled: |
+    .seeds-site-cta {
+      margin: 3rem 0;
+      padding: 4rem 1.5rem;
+      border-radius: 16px;
+      background: #0f2a44;
+      color: #fff;
+      text-align: center;
+    }
+    .seeds-site-cta h2 { margin: 0 0 1rem; font-size: 2rem; color: #fff; }
+    .seeds-site-cta p { margin: 0 auto 2rem; max-width: 40rem; font-size: 1.15rem; line-height: 1.6; color: #d5dee8; }
+    .seeds-site-button--light { background: #fff; color: #0f2a44; }
+    .seeds-site-button--light:hover, .seeds-site-button--light:focus { background: #e6eef7; color: #0f2a44; }
+dataDependencies: {}

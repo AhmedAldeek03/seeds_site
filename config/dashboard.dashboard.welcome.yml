@@ -1,0 +1,71 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.content_recent
+    - views.view.who_s_new
+  content:
+    - 'block_content:basic:7c1d6b0e-4f2a-4d8e-9b3c-5a6e8f1d2c40'
+  module:
+    - block_content
+    - layout_builder
+    - layout_discovery
+    - views
+id: welcome
+label: Welcome
+description: 'Getting started steps, recent content and new users.'
+layout:
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: ''
+    components:
+      3e9b7a1c-2d4f-4c6b-8a5e-1f0d9c7b6a52:
+        uuid: 3e9b7a1c-2d4f-4c6b-8a5e-1f0d9c7b6a52
+        region: content
+        configuration:
+          id: 'block_content:7c1d6b0e-4f2a-4d8e-9b3c-5a6e8f1d2c40'
+          label: 'Getting started'
+          label_display: visible
+          provider: block_content
+          status: true
+          info: ''
+          view_mode: full
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_twocol_section
+    layout_settings:
+      label: ''
+      context_mapping: {  }
+      column_widths: 67-33
+    components:
+      0f6c8a52-7d3e-4b1a-9c2f-5e8d7a6b4c31:
+        uuid: 0f6c8a52-7d3e-4b1a-9c2f-5e8d7a6b4c31
+        region: first
+        configuration:
+          id: 'views_block:content_recent-block_1'
+          label: 'Recent content'
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: 'Recent content'
+          items_per_page: 0
+        weight: 0
+        additional: {  }
+      9a1b2c3d-4e5f-4a6b-8c7d-0e1f2a3b4c5d:
+        uuid: 9a1b2c3d-4e5f-4a6b-8c7d-0e1f2a3b4c5d
+        region: second
+        configuration:
+          id: 'views_block:who_s_new-block_1'
+          label: "Who's new"
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: "Who's new"
+          items_per_page: 0
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+weight: -10

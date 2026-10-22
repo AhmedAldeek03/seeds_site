@@ -1,0 +1,41 @@
+_meta:
+  version: '1.0'
+  entity_type: menu_link_content
+  uuid: 47ff2c79-8df8-479e-b27d-1f00a6a28fe9
+  bundle: menu_link_content
+  default_langcode: en
+  depends:
+    2c0e17fc-bf18-41c0-9212-1c2b8fbc439c: menu_link_content
+default:
+  enabled:
+    -
+      value: true
+  title:
+    -
+      value: Events
+  menu_name:
+    -
+      value: main
+  link:
+    -
+      uri: 'internal:/media-center/events'
+      title: null
+      options: {  }
+  external:
+    -
+      value: false
+  rediscover:
+    -
+      value: true
+  weight:
+    -
+      value: 1
+  expanded:
+    -
+      value: true
+  parent:
+    -
+      value: 'menu_link_content:2c0e17fc-bf18-41c0-9212-1c2b8fbc439c'
+  revision_translation_affected:
+    -
+      value: true

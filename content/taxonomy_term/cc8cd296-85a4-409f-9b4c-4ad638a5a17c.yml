@@ -1,0 +1,23 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: cc8cd296-85a4-409f-9b4c-4ad638a5a17c
+  bundle: tags
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Announcements
+  weight:
+    -
+      value: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en
+      alias: null

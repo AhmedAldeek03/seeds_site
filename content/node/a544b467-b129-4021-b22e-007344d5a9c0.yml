@@ -1,0 +1,65 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: a544b467-b129-4021-b22e-007344d5a9c0
+  bundle: event
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+    7039806e-2726-4246-8000-5cc802288fde: media
+    dde12876-2b7d-432d-9bc1-e24831045c1a: taxonomy_term
+default:
+  revision_uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  title:
+    -
+      value: 'Open day at the community centre'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /events/open-day
+      langcode: en
+  field_body:
+    -
+      value: '<p>Meet our team, see the new centre and join free activities for all ages.</p><p>This is demo content. Edit it, or remove all demo content from the dashboard when you are ready.</p>'
+      format: basic_editor
+      summary: 'Meet our team, see the new centre and join free activities for all ages.'
+  field_date_range:
+    -
+      value: '2027-02-14T08:00:00'
+      end_value: '2027-02-14T14:00:00'
+  field_link:
+    -
+      uri: 'internal:/contact-us'
+      title: Register
+      options: {  }
+  field_media:
+    -
+      entity: 7039806e-2726-4246-8000-5cc802288fde
+  field_page_url:
+    -
+      value: open-day
+  field_plain_text:
+    -
+      value: 'Community centre, Main hall'
+  field_term:
+    -
+      entity: dde12876-2b7d-432d-9bc1-e24831045c1a

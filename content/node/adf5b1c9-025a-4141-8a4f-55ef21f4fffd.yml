@@ -1,0 +1,65 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: adf5b1c9-025a-4141-8a4f-55ef21f4fffd
+  bundle: event
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+    196f70fb-75bd-41d0-8455-26f608ce8d97: media
+    6d22d594-2ab2-4fad-a969-ea483d62bfe2: taxonomy_term
+default:
+  revision_uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  title:
+    -
+      value: 'Volunteer training workshop'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /events/volunteer-training
+      langcode: en
+  field_body:
+    -
+      value: '<p>A morning workshop for new volunteers: our work, safety and first steps.</p><p>This is demo content. Edit it, or remove all demo content from the dashboard when you are ready.</p>'
+      format: basic_editor
+      summary: 'A morning workshop for new volunteers: our work, safety and first steps.'
+  field_date_range:
+    -
+      value: '2027-03-06T07:00:00'
+      end_value: '2027-03-06T11:00:00'
+  field_link:
+    -
+      uri: 'internal:/contact-us'
+      title: Register
+      options: {  }
+  field_media:
+    -
+      entity: 196f70fb-75bd-41d0-8455-26f608ce8d97
+  field_page_url:
+    -
+      value: volunteer-training
+  field_plain_text:
+    -
+      value: Online
+  field_term:
+    -
+      entity: 6d22d594-2ab2-4fad-a969-ea483d62bfe2

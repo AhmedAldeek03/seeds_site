@@ -1,0 +1,53 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 684eccd5-d436-4ad1-8e87-15db73205388
+  bundle: news
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+    4f482494-676e-433a-be81-cd917cf6e5ee: media
+    6d22d594-2ab2-4fad-a969-ea483d62bfe2: taxonomy_term
+default:
+  revision_uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  title:
+    -
+      value: 'Scholarship programme for 2027 now open'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /news/scholarship-programme-2027
+      langcode: en
+  field_body:
+    -
+      value: '<p>The programme covers tuition, books and mentoring for the full year of study.</p><p>This is demo content. Edit it, or remove all demo content from the dashboard when you are ready.</p>'
+      format: basic_editor
+      summary: 'Students can apply for one of fifty scholarships until the end of March.'
+  field_media:
+    -
+      entity: 4f482494-676e-433a-be81-cd917cf6e5ee
+  field_page_url:
+    -
+      value: scholarship-programme-2027
+  field_term:
+    -
+      entity: 6d22d594-2ab2-4fad-a969-ea483d62bfe2

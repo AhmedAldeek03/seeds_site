@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  theme:
+    - seeds_ui
+id: seeds_ui_local_tasks
+theme: seeds_ui
+region: featured_top
+weight: 10
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: ''
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

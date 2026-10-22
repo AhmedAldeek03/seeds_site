@@ -1,0 +1,26 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 4230ec16-18ff-4259-8ba8-ea8d5cb4d766
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+default:
+  uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  filename:
+    -
+      value: news-2.jpg
+  uri:
+    -
+      value: 'public://demo/news-2.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 41298
+  status:
+    -
+      value: true

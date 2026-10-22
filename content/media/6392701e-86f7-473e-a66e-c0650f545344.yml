@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 6392701e-86f7-473e-a66e-c0650f545344
+  bundle: image
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+    b74001fb-5de7-44be-a758-c7dac4a5c848: file
+default:
+  status:
+  - value: true
+  uid:
+  - entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  name:
+  - value: 'Demo: news-1'
+  revision_translation_affected:
+  - value: true
+  path:
+  - langcode: en
+    alias: null
+  is_default:
+  - value: false
+  field_image:
+  - alt: Placeholder image
+    title: ''
+    width: 1600
+    height: 900
+    entity: b74001fb-5de7-44be-a758-c7dac4a5c848
+  field_media_image:
+  - alt: Placeholder image
+    title: ''
+    width: 1600
+    height: 900
+    entity: b74001fb-5de7-44be-a758-c7dac4a5c848

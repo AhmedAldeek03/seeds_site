@@ -1,0 +1,153 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - search_api.server.database
+  module:
+    - canvas
+    - node
+id: content
+name: Content
+description: 'News, Events and pages.'
+read_only: false
+field_settings:
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: field_body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_body
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  page_status:
+    label: 'Page published'
+    datasource_id: 'entity:canvas_page'
+    property_path: status
+    type: boolean
+    dependencies:
+      module:
+        - canvas
+  page_title:
+    label: 'Page title'
+    datasource_id: 'entity:canvas_page'
+    property_path: title
+    type: text
+    boost: 8.0
+    dependencies:
+      module:
+        - canvas
+  rendered_item:
+    label: 'Rendered item'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        - anonymous
+      view_mode:
+        'entity:canvas_page':
+          canvas_page: default
+        'entity:node':
+          event: default
+          news: default
+  status:
+    label: Published
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    dependencies:
+      module:
+        - node
+  summary:
+    label: Summary
+    datasource_id: 'entity:node'
+    property_path: 'field_body:summary'
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_body
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: 8.0
+    dependencies:
+      module:
+        - node
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:canvas_page':
+    languages:
+      default: true
+      selected: {  }
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - event
+        - news
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  canvas_component_tree_inputs:
+    ignored_prop_names:
+      - class
+      - cssClasses
+      - extraClasses
+      - id
+  custom_value: {  }
+  entity_status: {  }
+  entity_type: {  }
+  html_filter:
+    all_fields: false
+    title: true
+    alt: true
+    tags:
+      b: 2.0
+      em: 1.5
+      h1: 5.0
+      h2: 3.0
+      h3: 2.0
+      strong: 2.0
+      u: 1.5
+  ignorecase:
+    all_fields: false
+  language_with_fallback: {  }
+  rendered_item: {  }
+  tokenizer:
+    all_fields: false
+    spaces: ''
+    ignored: ._-
+    overlap_cjk: 1
+    minimum_word_size: '3'
+  transliteration:
+    all_fields: false
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  delete_on_fail: true
+  index_directly: true
+  track_changes_in_references: true
+server: database

@@ -1,0 +1,65 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: cebe9d45-950e-4791-8af5-34199bd6defc
+  bundle: event
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+    5901a06c-369c-4f77-a037-2f04b80d467f: media
+    cc8cd296-85a4-409f-9b4c-4ad638a5a17c: taxonomy_term
+default:
+  revision_uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  title:
+    -
+      value: 'Spring fundraising dinner'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /events/spring-dinner
+      langcode: en
+  field_body:
+    -
+      value: '<p>An evening of food, music and stories, in support of our education programmes.</p><p>This is demo content. Edit it, or remove all demo content from the dashboard when you are ready.</p>'
+      format: basic_editor
+      summary: 'An evening of food, music and stories, in support of our education programmes.'
+  field_date_range:
+    -
+      value: '2027-04-24T16:00:00'
+      end_value: '2027-04-24T20:00:00'
+  field_link:
+    -
+      uri: 'internal:/contact-us'
+      title: Register
+      options: {  }
+  field_media:
+    -
+      entity: 5901a06c-369c-4f77-a037-2f04b80d467f
+  field_page_url:
+    -
+      value: spring-dinner
+  field_plain_text:
+    -
+      value: 'City Hotel, Ballroom'
+  field_term:
+    -
+      entity: cc8cd296-85a4-409f-9b4c-4ad638a5a17c

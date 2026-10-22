@@ -1,0 +1,35 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 5901a06c-369c-4f77-a037-2f04b80d467f
+  bundle: image
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+    794cac69-3279-4c54-b367-51cb19cb9082: file
+default:
+  status:
+  - value: true
+  uid:
+  - entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  name:
+  - value: 'Demo: event-3'
+  revision_translation_affected:
+  - value: true
+  path:
+  - langcode: en
+    alias: null
+  is_default:
+  - value: false
+  field_image:
+  - alt: Placeholder image
+    title: ''
+    width: 1600
+    height: 900
+    entity: 794cac69-3279-4c54-b367-51cb19cb9082
+  field_media_image:
+  - alt: Placeholder image
+    title: ''
+    width: 1600
+    height: 900
+    entity: 794cac69-3279-4c54-b367-51cb19cb9082

@@ -1,0 +1,26 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 794cac69-3279-4c54-b367-51cb19cb9082
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+default:
+  uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  filename:
+    -
+      value: event-3.jpg
+  uri:
+    -
+      value: 'public://demo/event-3.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 39940
+  status:
+    -
+      value: true

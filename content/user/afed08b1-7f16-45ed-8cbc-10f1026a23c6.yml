@@ -1,0 +1,40 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  name:
+    -
+      value: demo_content
+  mail:
+    -
+      value: demo@example.com
+  timezone:
+    -
+      value: Asia/Amman
+  status:
+    -
+      value: false
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0
+  path:
+    -
+      langcode: en
+      alias: null
+  field_last_password_reset:
+    -
+      value: '2026-10-22T12:25:02'
+  field_password_expiration:
+    -
+      value: false
+  field_pending_expire_sent:
+    -
+      value: 0

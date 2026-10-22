@@ -1,5 +1,305 @@
 name: 'Seeds site'
-description: 'A ready-to-use Seeds site with demo content.'
+description: 'A ready-to-use Seeds site for organisations: a home page, a Media center with News and Events, a Contact us page and demo content, plus an editorial workflow, ready-made roles, cookie consent and tools that make editing easier.'
 type: Site
 recipes:
+  # The Seeds foundation and every feature recipe, ready in Extend > Browse.
   - seeds_template
+  # Starter features: News & Events (Media center) and Contact us.
+  - media_center_seeds
+  - contact_form_recipe
+  # HTML emails for every core email (password reset, account emails...).
+  - easy_email_express
+  # The "Basic block" type, used for the Getting started box on the dashboard.
+  - core/recipes/basic_block_type
+install:
+  # Editorial workflow.
+  - content_moderation
+  - workflows
+  - scheduler_content_moderation_integration
+  # Roles a site manager can hand out without full admin rights.
+  - roleassign
+  # Cookie consent. Replace with the Seeds solution once it is available.
+  - klaro
+  # Accessibility checker for editors.
+  - editoria11y
+  # Site search.
+  - search_api
+  - search_api_db
+  # Who changed what and when.
+  - admin_audit_trail
+  - admin_audit_trail_auth
+  - admin_audit_trail_media
+  - admin_audit_trail_menu
+  - admin_audit_trail_node
+  - admin_audit_trail_taxonomy
+  - admin_audit_trail_user
+  # Visual page building (the home page is a Canvas page).
+  - canvas
+  - block
+  - menu_link_content
+  - menu_ui
+  - pathauto
+  - redirect
+  - views
+  - views_bulk_operations
+config:
+  # A recipe skips a module's default config, but Canvas needs its own (image
+  # styles, text formats) to work at all. Its two CKEditor configs are left
+  # out: on Seeds sites with extra CKEditor plugins (Editor Advanced Link) they
+  # fail validation. Same list as Local Reach, except the global asset
+  # library: this recipe ships its own (config/canvas.asset_library.global.yml)
+  # with the site styles.
+  import:
+    canvas:
+      - canvas.brand_kit.global
+      - canvas.component.marker.page_content
+      - canvas.settings
+      - filter.format.canvas_html_block
+      - filter.format.canvas_html_inline
+      - image.style.canvas_avatar
+      - image.style.canvas_parametrized_width
+    content_moderation:
+      - views.view.moderated_content
+    klaro: '*'
+    editoria11y: '*'
+    admin_audit_trail: '*'
+  strict: false
+  actions:
+    # The home page is the Canvas page with the /home alias (demo content).
+    system.site:
+      simpleConfigUpdate:
+        page.front: /home
+
+    # Cookie consent: show the notice on the first visit, and a button to
+    # change the choice later.
+    klaro.settings:
+      simpleConfigUpdate:
+        dialog_mode: notice
+        show_toggle_button: true
+        # Not on admin pages or in the Canvas editor.
+        disable_urls:
+          - '^\/admin'
+          - '^\/canvas'
+    user.role.anonymous:
+      grantPermissions:
+        - 'use klaro'
+    user.role.authenticated:
+      grantPermissions:
+        - 'use klaro'
+
+    # Organisation news and events don't show "By <author>, <date>".
+    node.type.news:
+      setDisplaySubmitted: false
+    node.type.event:
+      setDisplaySubmitted: false
+
+    # Site managers may hand out these roles, and only these.
+    roleassign.settings:
+      simpleConfigUpdate:
+        roleassign_roles:
+          content_editor: content_editor
+          reviewer: reviewer
+
+    # Short help on the fields editors use most.
+    field.field.node.news.field_page_url:
+      setDescription: 'The last part of the page address, for example <em>annual-report-2026</em>. Use lowercase letters, numbers and dashes.'
+    field.field.node.event.field_page_url:
+      setDescription: 'The last part of the page address, for example <em>open-day</em>. Use lowercase letters, numbers and dashes.'
+    field.field.node.news.field_body:
+      setDescription: 'The summary is shown on cards and in search results. Keep it to one or two sentences.'
+    field.field.node.event.field_body:
+      setDescription: 'The summary is shown on cards and in search results. Keep it to one or two sentences.'
+    field.field.node.news.field_seo_title:
+      setDescription: 'Leave empty to use the title. Shown in search results and when the page is shared.'
+    field.field.node.event.field_seo_title:
+      setDescription: 'Leave empty to use the title. Shown in search results and when the page is shared.'
+    field.field.node.news.field_seo_description:
+      setDescription: 'Leave empty to use the summary. Aim for about 150 characters.'
+    field.field.node.event.field_seo_description:
+      setDescription: 'Leave empty to use the summary. Aim for about 150 characters.'
+    field.field.node.event.field_date_range:
+      setDescription: 'Events stay in the upcoming list until they end.'
+
+    # Editors: write and submit drafts.
+    user.role.content_editor:
+      grantPermissions:
+        - 'view welcome dashboard'
+        - 'access content overview'
+        - 'view any unpublished content'
+        - 'view latest version'
+        - 'use seeds_editorial transition create_new_draft'
+        - 'use seeds_editorial transition submit_for_review'
+        - 'view editoria11y checker'
+        - 'access media overview'
+        - 'create media'
+        - 'edit own image media'
+        - 'edit own file media'
+
+    # Reviewers: everything editors do, plus publishing.
+    user.role.reviewer:
+      grantPermissions:
+        - 'view welcome dashboard'
+        - 'access administration pages'
+        - 'access content overview'
+        - 'view any unpublished content'
+        - 'view latest version'
+        - 'view the administration theme'
+        - 'access navigation'
+        - 'use seeds_editorial transition create_new_draft'
+        - 'use seeds_editorial transition submit_for_review'
+        - 'use seeds_editorial transition send_back'
+        - 'use seeds_editorial transition publish'
+        - 'use seeds_editorial transition archive'
+        - 'use seeds_editorial transition restore'
+        - 'use seeds_editorial transition restore_draft'
+        - 'create news content'
+        - 'edit any news content'
+        - 'delete any news content'
+        - 'view news revisions'
+        - 'revert news revisions'
+        - 'create event content'
+        - 'edit any event content'
+        - 'delete any event content'
+        - 'view event revisions'
+        - 'revert event revisions'
+        - 'schedule publishing of nodes'
+        - 'view scheduled content'
+        - 'view editoria11y checker'
+        - 'mark as hidden in editoria11y'
+        - 'access media overview'
+        - 'create media'
+        - 'update any media'
+        - 'access contextual links'
+
+    # Site managers: run the site day to day without full admin rights. They
+    # add features, manage menus, users (Editor and Reviewer only) and forms.
+    user.role.site_manager:
+      grantPermissions:
+        - 'view welcome dashboard'
+        - 'access administration pages'
+        - 'access content overview'
+        - 'view any unpublished content'
+        - 'view latest version'
+        - 'view the administration theme'
+        - 'access navigation'
+        - 'use seeds_editorial transition create_new_draft'
+        - 'use seeds_editorial transition submit_for_review'
+        - 'use seeds_editorial transition send_back'
+        - 'use seeds_editorial transition publish'
+        - 'use seeds_editorial transition archive'
+        - 'use seeds_editorial transition restore'
+        - 'use seeds_editorial transition restore_draft'
+        - 'create news content'
+        - 'edit any news content'
+        - 'delete any news content'
+        - 'view news revisions'
+        - 'revert news revisions'
+        - 'create event content'
+        - 'edit any event content'
+        - 'delete any event content'
+        - 'view event revisions'
+        - 'revert event revisions'
+        - 'schedule publishing of nodes'
+        - 'view scheduled content'
+        - 'create canvas_page'
+        - 'edit canvas_page'
+        - 'delete canvas_page'
+        - 'view editoria11y checker'
+        - 'mark as hidden in editoria11y'
+        - 'manage editoria11y results'
+        - 'access media overview'
+        - 'create media'
+        - 'update any media'
+        - 'delete any media'
+        - 'administer menu'
+        - 'administer users'
+        - 'assign roles'
+        - 'administer site configuration'
+        - 'administer modules'
+        - 'access site reports'
+        - 'access admin audit trail'
+        - 'access contextual links'
+        - 'administer webform'
+        - 'access webform overview'
+        - 'administer klaro'
+        - 'administer url aliases'
+        - 'administer redirects'
+        - 'administer taxonomy'
+
+    # Sidebar: put Add features, Content, Automation and People on the first
+    # level. A recipe can run an action only once per config name, so the
+    # extra entries write the same name with a leading "?" (the "only if it
+    # exists" marker, which Drupal strips before applying the action).
+    navigation.block_layout:
+      addNavigationBlock:
+        delta: 0
+        configuration:
+          id: navigation_link
+          label: 'Add features'
+          label_display: '0'
+          provider: navigation
+          title: 'Add features'
+          uri: 'internal:/admin/modules/browse/recommended'
+          icon_class: system-modules-list
+    '?navigation.block_layout':
+      addNavigationBlock:
+        delta: 1
+        configuration:
+          id: navigation_link
+          label: Content
+          label_display: '0'
+          provider: navigation
+          title: Content
+          uri: 'internal:/admin/content'
+          icon_class: system-admin-content
+    '??navigation.block_layout':
+      addNavigationBlock:
+        delta: 2
+        configuration:
+          id: navigation_link
+          label: Automation
+          label_display: '0'
+          provider: navigation
+          title: Automation
+          uri: 'internal:/admin/config/workflow/eca'
+          icon_class: tools
+    '???navigation.block_layout':
+      addNavigationBlock:
+        delta: 3
+        configuration:
+          id: navigation_link
+          label: People
+          label_display: '0'
+          provider: navigation
+          title: People
+          uri: 'internal:/admin/people'
+          icon_class: entity-user-collection
+    # The same links in Seeds Toolbar's settings, so admins can edit, reorder
+    # or remove them at Configuration > User interface > Seeds Toolbar.
+    seeds_toolbar.settings:
+      simpleConfigUpdate:
+        custom_links:
+          -
+            title: 'Add features'
+            url: 'internal:/admin/modules/browse/recommended'
+            icon: system-modules-list
+            weight: -40
+            uuid: ''
+          -
+            title: Content
+            url: 'internal:/admin/content'
+            icon: system-admin-content
+            weight: -30
+            uuid: ''
+          -
+            title: Automation
+            url: 'internal:/admin/config/workflow/eca'
+            icon: tools
+            weight: -20
+            uuid: ''
+          -
+            title: People
+            url: 'internal:/admin/people'
+            icon: entity-user-collection
+            weight: -10
+            uuid: ''

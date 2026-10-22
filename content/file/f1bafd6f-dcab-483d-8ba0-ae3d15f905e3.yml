@@ -1,0 +1,26 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: f1bafd6f-dcab-483d-8ba0-ae3d15f905e3
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+default:
+  uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  filename:
+    -
+      value: event-2.jpg
+  uri:
+    -
+      value: 'public://demo/event-2.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 42418
+  status:
+    -
+      value: true

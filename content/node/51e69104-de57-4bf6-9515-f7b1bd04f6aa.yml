@@ -1,0 +1,53 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 51e69104-de57-4bf6-9515-f7b1bd04f6aa
+  bundle: news
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+    6392701e-86f7-473e-a66e-c0650f545344: media
+    dde12876-2b7d-432d-9bc1-e24831045c1a: taxonomy_term
+default:
+  revision_uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  status:
+    -
+      value: true
+  uid:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  title:
+    -
+      value: 'Our new community centre opens its doors'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  moderation_state:
+    -
+      value: published
+  path:
+    -
+      alias: /news/community-centre-opens
+      langcode: en
+  field_body:
+    -
+      value: '<p>The centre offers meeting rooms, a library corner and a playground, and is open six days a week.</p><p>This is demo content. Edit it, or remove all demo content from the dashboard when you are ready.</p>'
+      format: basic_editor
+      summary: 'After two years of work, the new centre is ready to welcome families from the whole neighbourhood.'
+  field_media:
+    -
+      entity: 6392701e-86f7-473e-a66e-c0650f545344
+  field_page_url:
+    -
+      value: community-centre-opens
+  field_term:
+    -
+      entity: dde12876-2b7d-432d-9bc1-e24831045c1a
