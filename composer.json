@@ -1,0 +1,19 @@
+{
+    "name": "drupal/seeds_site",
+    "description": "A ready-to-use Seeds site for organisations: Seeds template plus demo content, editorial workflow, roles, cookie consent and editor-friendly tools.",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/admin_audit_trail": "^1.0",
+        "drupal/canvas": "^1.12",
+        "drupal/core": "^11.3",
+        "drupal/easy_email": "^3.0",
+        "drupal/editoria11y": "^3.0",
+        "drupal/klaro": "^3.1",
+        "drupal/roleassign": "^2.0",
+        "drupal/scheduler_content_moderation_integration": "^3.0",
+        "drupal/search_api": "^1.42",
+        "drupal/seeds_template": "1.0.x-dev@dev",
+        "drupal/trash": "^3.1"
+    }
+}

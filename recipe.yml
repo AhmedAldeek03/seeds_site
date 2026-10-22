@@ -1,0 +1,5 @@
+name: 'Seeds site'
+description: 'A ready-to-use Seeds site with demo content.'
+type: Site
+recipes:
+  - seeds_template
