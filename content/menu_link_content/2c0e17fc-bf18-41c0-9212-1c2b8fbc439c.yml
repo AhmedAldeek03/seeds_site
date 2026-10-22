@@ -16,7 +16,7 @@ default:
       value: main
   link:
     -
-      uri: 'route:<nolink>'
+      uri: 'internal:/media-center'
       title: null
       options: {  }
   external:

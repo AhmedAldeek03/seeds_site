@@ -1,0 +1,58 @@
+_meta:
+  version: '1.0'
+  entity_type: canvas_page
+  uuid: 5d8a3f2e-6b1c-4e7a-9f20-8c4b1e6d7a93
+  default_langcode: en
+  depends:
+    afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
+default:
+  status:
+    -
+      value: true
+  owner:
+    -
+      entity: afed08b1-7f16-45ed-8cbc-10f1026a23c6
+  title:
+    -
+      value: 'Media center'
+  description:
+    -
+      value: 'Our latest news and upcoming events. Edit it in Canvas.'
+  components:
+    -
+      uuid: 1a7c9e42-3b5d-4f8a-a6e1-2d9c0b4f7e15
+      component_id: js.seeds_site_hero
+      inputs:
+        heading: 'Stories from our work'
+        text: 'News, announcements and the events where you can meet us.'
+        buttonText: 'All news'
+        buttonUrl: /media-center/news
+    -
+      uuid: 6e2b8d14-9c3f-4a7e-b5d0-7f1a3c8e2b46
+      component_id: block.views_block.news-block_home
+      inputs:
+        label: 'Latest news'
+        label_display: visible
+        views_label: ''
+    -
+      uuid: 9f4d2a68-1e7b-4c5a-8d3f-0b6e9a2c4d71
+      component_id: block.views_block.events-block_home
+      inputs:
+        label: 'Upcoming events'
+        label_display: visible
+        views_label: ''
+    -
+      uuid: 3c8e1f57-7a2d-4b9e-9e64-5d0b2f8a1c39
+      component_id: js.seeds_site_cta
+      inputs:
+        heading: 'Join us at our next event'
+        text: 'Open days, workshops and dinners: see everything coming up.'
+        buttonText: 'All events'
+        buttonUrl: /media-center/events
+  path:
+    -
+      alias: /media-center
+      langcode: en
+  revision_translation_affected:
+    -
+      value: true

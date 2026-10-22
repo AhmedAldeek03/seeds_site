@@ -1,0 +1,16 @@
+--- a/templates/navigation/menu.html.twig
++++ b/templates/navigation/menu.html.twig
+@@ -72,7 +72,12 @@
+ 					#}
+ 					{% set aria_id = (item.title ~ '-submenu-' ~ loop.index)|clean_id %}
+ 
+-					{% if item.below %}
++					{% if item.below and menu_item_type == 'link' %}
++						{# A parent with its own page stays a link; the dropdown opens on hover and with the arrow keys. #}
++						<a href="{{ item.url }}" class="{{ link_classes|join(' ') }}" @mouseenter="open = true" @mouseleave="open = false" @focus="open = true" @keydown.arrow-down.prevent="open = true" @keydown.arrow-up.prevent="open = true" @keydown.escape.stop="open = false" :aria-expanded="open.toString()" aria-haspopup="menu" aria-controls="{{ aria_id }}">
++							{{ item.title }}
++						</a>
++					{% elseif item.below %}
+ 						<a class="{{ link_classes|join(' ') }}" @click.prevent="open = !open" @mouseenter="open = true" @mouseleave="open = false" @focus="open = true" @keydown.enter.prevent="open = !open" @keydown.space.prevent="open = !open" @keydown.arrow-down.prevent="open = true" @keydown.arrow-up.prevent="open = true" @keydown.escape.stop="open = false" role="button" :aria-expanded="open.toString()" aria-haspopup="menu" aria-controls="{{ aria_id }}">
+ 							{{ item.title }}
+ 						</a>

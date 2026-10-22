@@ -15,12 +15,14 @@ when the people running the site should be able to start right away.
 | Page | Address | Built with |
 |---|---|---|
 | Home | `/` (alias `/home`) | Canvas page: hero, highlights, latest news, upcoming events, call to action |
+| Media center | `/media-center` | Canvas page: latest news, upcoming events, links to all news and events |
 | News | `/media-center/news` | View `seeds_site_news` |
 | Events | `/media-center/events` | View `seeds_site_events` (upcoming only) |
 | Contact us | `/contact-us` | Webform from the Contact form recipe |
 | Search | `/search` | Search API with a database server |
 
-Header menu: **Home**, **Media center** (News, Events), **Contact us**. Footer menu: News,
+Header menu: **Home**, **Media center** (News, Events), **Contact us**. *Media center* is a
+link to its own page, and its dropdown opens on hover (this needs the Seeds UI patch below). Footer menu: News,
 Events, Search, Contact us.
 
 ### Demo content
@@ -74,11 +76,17 @@ drush site:install ../recipes/seeds_site --account-name=admin --site-name="My si
 drush search-api:index
 ```
 
-### Required patch
+### Required patches
 
-`restrict_ip` 5.0.1 (from Seeds base) breaks every page once Canvas is enabled, because it
-type-hints the concrete `Messenger` class. This repository ships the fix in `patches/`. Add it
-to the project's `composer.json` with
+This repository ships two fixes in `patches/`:
+
+- `restrict_ip` 5.0.1 (from Seeds base) breaks every page once Canvas is enabled, because it
+  type-hints the concrete `Messenger` class.
+- The `seeds_ui` main menu turns every item with children into a dropdown toggle with no link, so
+  *Media center* could not be clicked. With the patch, a parent item that has its own page stays
+  a link; items set to `<nolink>` keep working as toggles.
+
+Add them to the project's `composer.json` with
 [Composer Patches](https://github.com/cweagans/composer-patches) 2:
 
 ```json
@@ -89,6 +97,9 @@ to the project's `composer.json` with
     "patches": {
         "drupal/restrict_ip": {
             "Type-hint MessengerInterface so it works with Drupal Canvas": "recipes/seeds_site/patches/restrict_ip-messenger-interface.patch"
+        },
+        "drupal/seeds_ui": {
+            "Keep parent menu items with their own page clickable": "recipes/seeds_site/patches/seeds_ui-clickable-parent-menu-links.patch"
         }
     }
 }
