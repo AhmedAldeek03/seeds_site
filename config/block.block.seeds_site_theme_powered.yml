@@ -4,9 +4,9 @@ dependencies:
   module:
     - system
   theme:
-    - seeds_ui
-id: seeds_ui_powered
-theme: seeds_ui
+    - seeds_site_theme
+id: seeds_site_theme_powered
+theme: seeds_site_theme
 region: footer_bottom
 weight: 0
 provider: null

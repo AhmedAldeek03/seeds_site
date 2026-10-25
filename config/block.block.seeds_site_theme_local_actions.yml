@@ -2,9 +2,9 @@ langcode: en
 status: true
 dependencies:
   theme:
-    - seeds_ui
-id: seeds_ui_local_actions
-theme: seeds_ui
+    - seeds_site_theme
+id: seeds_site_theme_local_actions
+theme: seeds_site_theme
 region: content
 weight: -10
 provider: null

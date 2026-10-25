@@ -4,15 +4,15 @@ dependencies:
   module:
     - system
   theme:
-    - seeds_ui
-id: seeds_ui_messages
-theme: seeds_ui
-region: highlighted
+    - seeds_site_theme
+id: seeds_site_theme_content
+theme: seeds_site_theme
+region: content
 weight: 0
 provider: null
-plugin: system_messages_block
+plugin: system_main_block
 settings:
-  id: system_messages_block
+  id: system_main_block
   label: ''
   label_display: '0'
   provider: system

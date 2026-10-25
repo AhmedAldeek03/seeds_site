@@ -22,7 +22,7 @@ when the people running the site should be able to start right away.
 | Search | `/search` | Search API with a database server |
 
 Header menu: **Home**, **Media center** (News, Events), **Contact us**. *Media center* is a
-link to its own page, and its dropdown opens on hover (this needs the Seeds UI patch below). Footer menu: News,
+link to its own page, and its dropdown opens on hover. Footer menu: News,
 Events, Search, Contact us.
 
 ### Demo content
@@ -51,7 +51,7 @@ Three News items, three Events, six images and three tags, all created by the bl
 | Feature | Details |
 |---|---|
 | Cookie consent | Klaro shows a notice on the first visit and a button to change the choice later. It is off on `/admin` and `/canvas`. Replace it with the Seeds solution once that is ready. |
-| Site styles | Seeds UI is a base theme with almost no CSS. This recipe adds a light stylesheet (header, menu, cards, forms, footer) through Canvas's global CSS (Canvas > Code > Global CSS). Edit it there, or remove it once the site has its own Seeds UI subtheme. The source is `assets/site.css`. |
+| Site styles | The [Seeds site theme](https://github.com/AhmedAldeek03/seeds_site_theme), a Seeds UI subtheme, is the front-end theme. It adds a light stylesheet (header, menu, cards, forms, footer) and keeps parent menu items like *Media center* clickable. Change the look in the theme's `css/site.css`. |
 | No author lines | News and Events don't show "By author, date". |
 
 ## Install
@@ -61,6 +61,7 @@ GitHub), plus this repository:
 
 ```bash
 composer config repositories.seeds_site '{"type":"vcs","url":"https://github.com/AhmedAldeek03/seeds_site","no-api":true}'
+composer config repositories.seeds_site_theme '{"type":"vcs","url":"https://github.com/AhmedAldeek03/seeds_site_theme","no-api":true}'
 composer require drupal/seeds_site:1.0.x-dev
 ```
 
@@ -79,15 +80,10 @@ drush search-api:index
 
 ### Required patches
 
-This repository ships two fixes in `patches/`:
+This repository ships one fix in `patches/`: `restrict_ip` 5.0.1 (from Seeds base) breaks every
+page once Canvas is enabled, because it type-hints the concrete `Messenger` class.
 
-- `restrict_ip` 5.0.1 (from Seeds base) breaks every page once Canvas is enabled, because it
-  type-hints the concrete `Messenger` class.
-- The `seeds_ui` main menu turns every item with children into a dropdown toggle with no link, so
-  *Media center* could not be clicked. With the patch, a parent item that has its own page stays
-  a link; items set to `<nolink>` keep working as toggles.
-
-Add them to the project's `composer.json` with
+Add it to the project's `composer.json` with
 [Composer Patches](https://github.com/cweagans/composer-patches) 2:
 
 ```json
@@ -98,9 +94,6 @@ Add them to the project's `composer.json` with
     "patches": {
         "drupal/restrict_ip": {
             "Type-hint MessengerInterface so it works with Drupal Canvas": "recipes/seeds_site/patches/restrict_ip-messenger-interface.patch"
-        },
-        "drupal/seeds_ui": {
-            "Keep parent menu items with their own page clickable": "recipes/seeds_site/patches/seeds_ui-clickable-parent-menu-links.patch"
         }
     }
 }

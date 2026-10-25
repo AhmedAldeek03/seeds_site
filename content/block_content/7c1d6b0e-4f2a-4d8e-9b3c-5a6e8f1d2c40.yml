@@ -22,7 +22,7 @@ default:
       value: |-
         <p>Your site is ready. A few things to do first:</p>
         <ol>
-          <li><strong>Make it yours.</strong> Set the site name and email in <a href="/admin/config/system/site-information">Basic site settings</a>, and upload your logo in <a href="/admin/appearance/settings/seeds_ui">Appearance</a>.</li>
+          <li><strong>Make it yours.</strong> Set the site name and email in <a href="/admin/config/system/site-information">Basic site settings</a>, and upload your logo in <a href="/admin/appearance/settings/seeds_site_theme">Appearance</a>.</li>
           <li><strong>Edit the home page.</strong> Open the <a href="/home">home page</a> and click <em>Edit</em> to change the text and sections with Canvas.</li>
           <li><strong>Add your content.</strong> Create <a href="/node/add/news">News</a> and <a href="/node/add/event">Events</a>. Drafts go to review before they are published.</li>
           <li><strong>Add features.</strong> FAQ, Team, Gallery, Partners and more are one click away in <a href="/admin/modules/browse/recommended">Add features</a>.</li>

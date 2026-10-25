@@ -14,6 +14,8 @@ recipes:
   # An Administrator role with every permission, for people who run the whole site.
   - core/recipes/administrator_role
 install:
+  # The site's look: a Seeds UI subtheme with the site styles.
+  - seeds_site_theme
   # Dashboards for admins and editors, and the ECA model that opens the right
   # one after login.
   - dashboard
@@ -54,8 +56,8 @@ config:
   # styles, text formats) to work at all. Its two CKEditor configs are left
   # out: on Seeds sites with extra CKEditor plugins (Editor Advanced Link) they
   # fail validation. Same list as Local Reach, except the global asset
-  # library: this recipe ships its own (config/canvas.asset_library.global.yml)
-  # with the site styles.
+  # library: this recipe ships an empty one (config/canvas.asset_library.global.yml),
+  # since the site styles live in the Seeds site theme.
   import:
     canvas:
       - canvas.brand_kit.global
@@ -80,6 +82,10 @@ config:
     # Seeds template's generic dashboard: the Admin and Editor dashboards replace it.
     dashboard.dashboard.seeds:
       disable: []
+    # The Seeds site theme is the front-end theme.
+    system.theme:
+      simpleConfigUpdate:
+        default: seeds_site_theme
 
     # Cookie consent: show the notice on the first visit, and a button to
     # change the choice later.
