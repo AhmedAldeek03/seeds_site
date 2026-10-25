@@ -34,6 +34,7 @@ These come on top of what Seeds template already installs.
 | Accessibility checker | Editoria11y |
 | Site search | Search API, Search API Database |
 | Audit log | Admin Audit Trail, with its Auth, Media, Menu, Node, Taxonomy and User sub-modules |
+| Restore deleted items | Trash |
 | Visual pages | Canvas, Block |
 | Menus, page addresses and redirects | Menu UI, Menu link content, Pathauto, Redirect |
 | Lists and bulk actions | Views, Views UI, Views Bulk Operations |
@@ -51,7 +52,7 @@ switched on for anything, as the last column shows.
 | Autosave Form | Saves the edit form every minute, and offers to restore it after a crash or reload. | Works |
 | SAM (Simple Add More) | Shows one empty row for fields that take several values, with an *Add another item* button, instead of many empty rows. | Works |
 | Login with email or username | People can log in with either. | Works |
-| Media File Delete | Deleting a media item also deletes its file. | Works |
+| Media File Delete | Lets editors delete a media item's file along with it. | Seeds site turns its "delete the file" default off, because Trash keeps deleted media restorable (see Trash below) |
 | Media Library Edit | Edit a media item from inside the media library. | Works |
 | Length Indicator | Shows how many characters are left. | Works on the title, SEO title and SEO description of News and Events |
 | Tagify | Tag-style autocomplete with pills. | Installed; no field uses it (Tags use a select list) |
@@ -108,6 +109,7 @@ Three News items, three Events, six images and three tags, all created by the bl
 | Help text | Short tips on the page URL, summary, SEO and date fields. |
 | HTML emails | Easy Email Express replaces every core email with an HTML version. |
 | Audit log | Admin Audit Trail logs changes to content, media, menus, terms, users and logins. |
+| Trash | Deleting content, media, tags or a Canvas page moves it to **Content > Trash**, where it can be restored. Items are deleted for good after 30 days (on cron). Editors can restore content and media; only Administrators delete permanently. A media item's file stays while the item is in the trash; once the item is purged, cron removes the unused file. Custom blocks are not covered: enabling them breaks Canvas's block list. |
 
 ### For visitors
 
@@ -167,10 +169,12 @@ dependencies; one of them (for Yoast SEO) no longer applies.
 
 ## Known issues
 
-- **Trash is not included yet.** Trash replaces the `entity_type.manager` service, and
-  `seeds_layouts` type-hints the concrete `EntityTypeManager` class, so the site crashes on
-  install. Once `SeedsLayoutsManager::__construct()` takes `EntityTypeManagerInterface`, add
-  `trash` back.
+- **Seeds Layouts can't be turned on.** It type-hints the concrete `EntityTypeManager` class,
+  and Trash replaces that service, so the site crashes. Seeds template no longer installs it;
+  use Canvas for page layouts. Three other modules have the same type hint: the CKEditor 5
+  Plugin Pack's Restricted Editing sub-module would crash every page, and Seeds Page (offered as
+  an add-on) and Button Formatter would break only their own settings form. None of them is
+  on by default.
 - **The header has no search box.** Search is linked from the footer.
 
 ## Dashboards and login redirect

@@ -33,6 +33,9 @@ install:
   # Site search.
   - search_api
   - search_api_db
+  # Deleted content, media, tags and Canvas pages go to a trash first and can
+  # be restored. Needs Seeds Layouts to be uninstalled (see README).
+  - trash
   # Who changed what and when.
   - admin_audit_trail
   - admin_audit_trail_auth
@@ -79,6 +82,29 @@ config:
     system.site:
       simpleConfigUpdate:
         page.front: /home
+    # Trash: content, media, tags and Canvas pages. Custom blocks are left out:
+    # enabling them breaks Canvas's block list while Trash sets them up. Items
+    # are purged for good after 30 days (on cron).
+    trash.settings:
+      simpleConfigUpdate:
+        enabled_entity_types:
+          node: []
+          media: []
+          taxonomy_term: []
+          canvas_page: []
+        auto_purge:
+          enabled: true
+          after: '30 days'
+    # Seeds template deletes a media item's file straight away. With Trash the
+    # media item can come back, so keep the file; once the item is purged, core
+    # marks the unused file temporary and cron removes it.
+    media_file_delete.settings:
+      simpleConfigUpdate:
+        delete_file_default: false
+    file.settings:
+      simpleConfigUpdate:
+        make_unused_managed_files_temporary: true
+
     # Seeds template's generic dashboard: the Admin and Editor dashboards replace it.
     dashboard.dashboard.seeds:
       disable: []
@@ -139,6 +165,11 @@ config:
         - 'view the administration theme'
         - 'access navigation'
         - 'access contextual links'
+        # See and restore deleted content and media. Only admins purge.
+        - 'access trash'
+        - 'view deleted entities'
+        - 'restore node entities'
+        - 'restore media entities'
         - 'access content overview'
         - 'view any unpublished content'
         - 'view latest version'

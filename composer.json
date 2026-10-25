@@ -13,6 +13,7 @@
         "drupal/scheduler_content_moderation_integration": "^3.0",
         "drupal/search_api": "^1.42",
         "drupal/seeds_site_theme": "1.0.x-dev@dev",
-        "drupal/seeds_template": "1.0.x-dev@dev"
+        "drupal/seeds_template": "1.0.x-dev@dev",
+        "drupal/trash": "^3.1"
     }
 }
