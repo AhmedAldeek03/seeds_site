@@ -38,6 +38,39 @@ These come on top of what Seeds template already installs.
 | Menus, page addresses and redirects | Menu UI, Menu link content, Pathauto, Redirect |
 | Lists and bulk actions | Views, Views UI, Views Bulk Operations |
 
+### Modules that come from Seeds template
+
+Seeds site doesn't install these itself; they come with
+[Seeds template](https://github.com/AhmedAldeek03/seeds_template). Some are installed but not yet
+switched on for anything, as the last column shows.
+
+**Editor helpers**
+
+| Module | What it does | On a fresh Seeds site |
+|---|---|---|
+| Autosave Form | Saves the edit form every minute, and offers to restore it after a crash or reload. | Works |
+| SAM (Simple Add More) | Shows one empty row for fields that take several values, with an *Add another item* button, instead of many empty rows. | Works |
+| Login with email or username | People can log in with either. | Works |
+| Media File Delete | Deleting a media item also deletes its file. | Works |
+| Media Library Edit | Edit a media item from inside the media library. | Works |
+| Length Indicator | Shows how many characters are left. | Works on the title, SEO title and SEO description of News and Events |
+| Tagify | Tag-style autocomplete with pills. | Installed; no field uses it (Tags use a select list) |
+| Media Library Bulk Upload | Upload many images at once. | Installed; no media type is set up for it |
+| SVG Image | Lets image fields accept SVG files. | Installed; Image media doesn't allow `.svg` |
+| Scheduler | Publish or unpublish content at a set date. | Installed; not enabled on News or Events |
+
+**SEO**: Seeds SEO, Metatag (with Open Graph), Yoast SEO, Simple XML Sitemap, Redirect, Easy
+Breadcrumb, Responsive Image Preload.
+
+**Site building and admin**: Seeds Layouts, Seeds Administration, the ECA Modeler and the other
+ECA sub-modules, Project Browser and Package Manager (*Add features*), Field UI, Token OR,
+Config Language Lock.
+
+Seeds template itself builds on [Seeds base](https://github.com/AhmedAldeek03/seeds_base), which
+adds the foundation: the Seeds UI theme, the Seeds editor, media and toolbar modules, CKEditor
+plugins, security (Password Policy, Email TFA, SecKit, Restrict IP, Session Limit, CAPTCHA and
+reCAPTCHA) and performance modules.
+
 ## What you get
 
 ### Pages and menus
@@ -65,7 +98,7 @@ Three News items, three Events, six images and three tags, all created by the bl
 
 | Feature | Details |
 |---|---|
-| Editorial workflow | *Seeds editorial*: Draft → In review → Published, and Archived. Applies to News and Events, and works with Scheduler. |
+| Editorial workflow | *Seeds editorial*: Draft → In review → Published, and Archived. Applies to News and Events. Scheduler Content Moderation Integration is installed, but Scheduler is not enabled on News or Events yet. |
 | Roles | **Editor** (`content_editor`) writes drafts and submits them for review. **Administrator** has every permission, and reviews and publishes content (core's Administrator role recipe). |
 | Dashboards | **Admin dashboard** (`/admin/dashboard/admin`): Getting started steps, content waiting for review, recent content, site status and new users. **Editor dashboard** (`/admin/dashboard/editor`): the editor's drafts, content waiting for review, quick links and content they edited recently. |
 | Login redirect | The ECA model *Seeds site: open the right dashboard after login* sends people to their dashboard. Anyone who can view the Admin dashboard (Administrators) goes there, even if they also have the Editor role. Editors go to the Editor dashboard. A login link with its own `?destination=` and password-reset links are left alone. |
