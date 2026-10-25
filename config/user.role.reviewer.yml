@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: reviewer
-label: Reviewer
-weight: 3
-is_admin: false
-permissions: []

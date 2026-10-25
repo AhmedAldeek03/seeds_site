@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: site_manager
-label: 'Site manager'
-weight: 4
-is_admin: false
-permissions: []

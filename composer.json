@@ -10,7 +10,6 @@
         "drupal/easy_email_express": "^1.0",
         "drupal/editoria11y": "^3.0",
         "drupal/klaro": "^3.1",
-        "drupal/roleassign": "^2.0",
         "drupal/scheduler_content_moderation_integration": "^3.0",
         "drupal/search_api": "^1.42",
         "drupal/seeds_template": "1.0.x-dev@dev"

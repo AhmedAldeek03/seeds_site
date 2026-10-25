@@ -36,8 +36,9 @@ Three News items, three Events, six images and three tags, all created by the bl
 | Feature | Details |
 |---|---|
 | Editorial workflow | *Seeds editorial*: Draft → In review → Published, and Archived. Applies to News and Events, and works with Scheduler. |
-| Roles | **Editor** (`content_editor`) writes drafts and submits them for review. **Reviewer** also publishes and archives. **Site manager** also adds features, manages menus, forms and users, and can give people the Editor and Reviewer roles only (RoleAssign). |
-| Welcome dashboard | Getting started steps at the top of the dashboard: site settings, home page, content, features, team, demo content. |
+| Roles | **Editor** (`content_editor`) writes drafts and submits them for review. **Administrator** has every permission, and reviews and publishes content (core's Administrator role recipe). |
+| Dashboards | **Admin dashboard** (`/admin/dashboard/admin`): Getting started steps, content waiting for review, recent content, site status and new users. **Editor dashboard** (`/admin/dashboard/editor`): the editor's drafts, content waiting for review, quick links and content they edited recently. |
+| Login redirect | The ECA model *Seeds site: open the right dashboard after login* sends people to their dashboard. Anyone who can view the Admin dashboard (Administrators) goes there, even if they also have the Editor role. Editors go to the Editor dashboard. A login link with its own `?destination=` and password-reset links are left alone. |
 | Sidebar | *Add features*, *Content*, *Automation* (ECA) and *People* on the first level. Editable at Configuration > User interface > Seeds Toolbar. |
 | Visual pages | Canvas, with three Seeds site components (Hero, Highlights, Call to action) plus the Seeds UI components and the News and Events blocks. |
 | Accessibility checker | Editoria11y highlights issues while editing. |
@@ -116,7 +117,15 @@ dependencies; one of them (for Yoast SEO) no longer applies.
   `trash` back.
 - **The header has no search box.** Search is linked from the footer.
 
+## Dashboards and login redirect
+
+Who sees which dashboard is a permission: *Access to Admin dashboard* (`view admin dashboard`) and *Access to Editor dashboard* (`view editor dashboard`). To send another role to a dashboard, give it that permission; the ECA model checks permissions, not role names, so it needs no change. Admins can edit the dashboards at **Structure > Dashboard** and the redirect at **Automation**.
+
+The Dashboard module also opens `/admin/dashboard` after login and shows the first dashboard (by weight) the person can view. The Admin dashboard has the lower weight, so the sidebar's *Dashboard* link and the ECA redirect agree.
+
 ## Development
+
+### Demo content
 
 The demo content in `content/` was exported with `drush content:export`. To change it, install a
 site from this recipe, edit the content, and export again:

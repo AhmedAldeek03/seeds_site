@@ -1,0 +1,100 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_base
+    - eca_user
+    - modeler_api
+third_party_settings:
+  modeler_api:
+    modeler_id: workflow_modeler
+    label: 'Seeds site: open the right dashboard after login'
+id: seeds_site_dashboard_redirect
+weight: 0
+template: null
+events:
+  user_logged_in:
+    plugin: 'user:login'
+    label: 'User logged in'
+    configuration: {  }
+    successors:
+      -
+        id: check_destination
+        condition: not_password_reset
+conditions:
+  not_password_reset:
+    plugin: eca_route_match
+    label: 'Not a one-time login (password reset)?'
+    configuration:
+      request: 2
+      route: user.reset.login
+      operator: equal
+      type: value
+      case: false
+      negate: true
+  no_other_destination:
+    # The Dashboard module sets the destination to /admin/dashboard when the
+    # login link has none. Any other destination (for example after "Log in to
+    # edit this page") wins over the dashboard.
+    plugin: eca_scalar
+    label: 'No other page to go back to?'
+    configuration:
+      left: ',,/admin/dashboard,'
+      right: ',[current-page:query:destination],'
+      operator: contains
+      type: value
+      case: false
+      negate: false
+  can_view_admin_dashboard:
+    plugin: eca_current_user_permission
+    label: 'Can view the Admin dashboard?'
+    configuration:
+      permission: 'view admin dashboard'
+      negate: false
+  cannot_view_admin_dashboard:
+    plugin: eca_current_user_permission
+    label: 'Cannot view the Admin dashboard?'
+    configuration:
+      permission: 'view admin dashboard'
+      negate: true
+  can_view_editor_dashboard:
+    plugin: eca_current_user_permission
+    label: 'Can view the Editor dashboard?'
+    configuration:
+      permission: 'view editor dashboard'
+      negate: false
+gateways:
+  check_destination:
+    type: 0
+    successors:
+      -
+        id: choose_dashboard
+        condition: no_other_destination
+  choose_dashboard:
+    type: 0
+    successors:
+      -
+        id: go_to_admin_dashboard
+        condition: can_view_admin_dashboard
+      -
+        id: check_editor
+        condition: cannot_view_admin_dashboard
+  check_editor:
+    type: 0
+    successors:
+      -
+        id: go_to_editor_dashboard
+        condition: can_view_editor_dashboard
+actions:
+  go_to_admin_dashboard:
+    plugin: action_goto_action
+    label: 'Go to the Admin dashboard'
+    configuration:
+      url: /admin/dashboard/admin
+    successors: {  }
+  go_to_editor_dashboard:
+    plugin: action_goto_action
+    label: 'Go to the Editor dashboard'
+    configuration:
+      url: /admin/dashboard/editor
+    successors: {  }

@@ -1,0 +1,92 @@
+langcode: en
+status: true
+dependencies:
+  config:
+  - views.view.content_recent
+  - views.view.seeds_site_review_queue
+  - views.view.who_s_new
+  module:
+  - block_content
+  - dashboard
+  - layout_builder
+  - layout_discovery
+  - views
+id: admin
+label: Admin
+description: Getting started steps, content waiting for review, recent content, site status and new users.
+layout:
+- layout_id: layout_onecol
+  layout_settings:
+    label: ''
+  components:
+    f342dca7-a0b8-5d09-81f7-be6c37aa2418:
+      uuid: f342dca7-a0b8-5d09-81f7-be6c37aa2418
+      region: content
+      configuration:
+        id: block_content:7c1d6b0e-4f2a-4d8e-9b3c-5a6e8f1d2c40
+        label: Getting started
+        label_display: visible
+        provider: block_content
+        status: true
+        info: ''
+        view_mode: full
+      weight: 0
+      additional: {}
+  third_party_settings: {}
+- layout_id: layout_twocol_section
+  layout_settings:
+    label: ''
+    context_mapping: {}
+    column_widths: 67-33
+  components:
+    b5cf39cd-327b-513a-ad4a-366d4ab66b5e:
+      uuid: b5cf39cd-327b-513a-ad4a-366d4ab66b5e
+      region: first
+      configuration:
+        id: views_block:seeds_site_review_queue-block_1
+        label: Waiting for review
+        label_display: visible
+        provider: views
+        context_mapping: {}
+        views_label: Waiting for review
+        items_per_page: none
+      weight: 0
+      additional: {}
+    14f49d2c-14c3-5707-9876-05265ca4a9be:
+      uuid: 14f49d2c-14c3-5707-9876-05265ca4a9be
+      region: first
+      configuration:
+        id: views_block:content_recent-block_1
+        label: Recent content
+        label_display: visible
+        provider: views
+        context_mapping: {}
+        views_label: Recent content
+        items_per_page: none
+      weight: 1
+      additional: {}
+    c40fcb90-1e0a-5aa1-b2f6-87b65547994e:
+      uuid: c40fcb90-1e0a-5aa1-b2f6-87b65547994e
+      region: second
+      configuration:
+        id: dashboard_site_status
+        label: Site status
+        label_display: visible
+        provider: dashboard
+      weight: 0
+      additional: {}
+    68f9125e-ffbb-50e5-a653-b23831989ceb:
+      uuid: 68f9125e-ffbb-50e5-a653-b23831989ceb
+      region: second
+      configuration:
+        id: views_block:who_s_new-block_1
+        label: Who's new
+        label_display: visible
+        provider: views
+        context_mapping: {}
+        views_label: Who's new
+        items_per_page: none
+      weight: 1
+      additional: {}
+  third_party_settings: {}
+weight: -10

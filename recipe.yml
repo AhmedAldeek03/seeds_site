@@ -11,13 +11,19 @@ recipes:
   - easy_email_express
   # The "Basic block" type, used for the Getting started box on the dashboard.
   - core/recipes/basic_block_type
+  # An Administrator role with every permission, for people who run the whole site.
+  - core/recipes/administrator_role
 install:
+  # Dashboards for admins and editors, and the ECA model that opens the right
+  # one after login.
+  - dashboard
+  - eca
+  - eca_base
+  - eca_user
   # Editorial workflow.
   - content_moderation
   - workflows
   - scheduler_content_moderation_integration
-  # Roles a site manager can hand out without full admin rights.
-  - roleassign
   # Cookie consent. Replace with the Seeds solution once it is available.
   - klaro
   # Accessibility checker for editors.
@@ -41,6 +47,7 @@ install:
   - pathauto
   - redirect
   - views
+  - views_ui
   - views_bulk_operations
 config:
   # A recipe skips a module's default config, but Canvas needs its own (image
@@ -58,8 +65,9 @@ config:
       - filter.format.canvas_html_inline
       - image.style.canvas_avatar
       - image.style.canvas_parametrized_width
-    content_moderation:
-      - views.view.moderated_content
+    # "My drafts" and "Content I recently edited" on the Editor dashboard.
+    dashboard:
+      - views.view.dashboard_content
     klaro: '*'
     editoria11y: '*'
     admin_audit_trail: '*'
@@ -69,6 +77,9 @@ config:
     system.site:
       simpleConfigUpdate:
         page.front: /home
+    # Seeds template's generic dashboard: the Admin and Editor dashboards replace it.
+    dashboard.dashboard.seeds:
+      disable: []
 
     # Cookie consent: show the notice on the first visit, and a button to
     # change the choice later.
@@ -93,13 +104,6 @@ config:
     node.type.event:
       setDisplaySubmitted: false
 
-    # Site managers may hand out these roles, and only these.
-    roleassign.settings:
-      simpleConfigUpdate:
-        roleassign_roles:
-          content_editor: content_editor
-          reviewer: reviewer
-
     # Short help on the fields editors use most.
     field.field.node.news.field_page_url:
       setDescription: 'The last part of the page address, for example <em>annual-report-2026</em>. Use lowercase letters, numbers and dashes.'
@@ -123,7 +127,12 @@ config:
     # Editors: write and submit drafts.
     user.role.content_editor:
       grantPermissions:
-        - 'view welcome dashboard'
+        - 'view editor dashboard'
+        - 'view own unpublished content'
+        # The admin theme, the sidebar and the Edit pencils.
+        - 'view the administration theme'
+        - 'access navigation'
+        - 'access contextual links'
         - 'access content overview'
         - 'view any unpublished content'
         - 'view latest version'
@@ -134,97 +143,6 @@ config:
         - 'create media'
         - 'edit own image media'
         - 'edit own file media'
-
-    # Reviewers: everything editors do, plus publishing.
-    user.role.reviewer:
-      grantPermissions:
-        - 'view welcome dashboard'
-        - 'access administration pages'
-        - 'access content overview'
-        - 'view any unpublished content'
-        - 'view latest version'
-        - 'view the administration theme'
-        - 'access navigation'
-        - 'use seeds_editorial transition create_new_draft'
-        - 'use seeds_editorial transition submit_for_review'
-        - 'use seeds_editorial transition send_back'
-        - 'use seeds_editorial transition publish'
-        - 'use seeds_editorial transition archive'
-        - 'use seeds_editorial transition restore'
-        - 'use seeds_editorial transition restore_draft'
-        - 'create news content'
-        - 'edit any news content'
-        - 'delete any news content'
-        - 'view news revisions'
-        - 'revert news revisions'
-        - 'create event content'
-        - 'edit any event content'
-        - 'delete any event content'
-        - 'view event revisions'
-        - 'revert event revisions'
-        - 'schedule publishing of nodes'
-        - 'view scheduled content'
-        - 'view editoria11y checker'
-        - 'mark as hidden in editoria11y'
-        - 'access media overview'
-        - 'create media'
-        - 'update any media'
-        - 'access contextual links'
-
-    # Site managers: run the site day to day without full admin rights. They
-    # add features, manage menus, users (Editor and Reviewer only) and forms.
-    user.role.site_manager:
-      grantPermissions:
-        - 'view welcome dashboard'
-        - 'access administration pages'
-        - 'access content overview'
-        - 'view any unpublished content'
-        - 'view latest version'
-        - 'view the administration theme'
-        - 'access navigation'
-        - 'use seeds_editorial transition create_new_draft'
-        - 'use seeds_editorial transition submit_for_review'
-        - 'use seeds_editorial transition send_back'
-        - 'use seeds_editorial transition publish'
-        - 'use seeds_editorial transition archive'
-        - 'use seeds_editorial transition restore'
-        - 'use seeds_editorial transition restore_draft'
-        - 'create news content'
-        - 'edit any news content'
-        - 'delete any news content'
-        - 'view news revisions'
-        - 'revert news revisions'
-        - 'create event content'
-        - 'edit any event content'
-        - 'delete any event content'
-        - 'view event revisions'
-        - 'revert event revisions'
-        - 'schedule publishing of nodes'
-        - 'view scheduled content'
-        - 'create canvas_page'
-        - 'edit canvas_page'
-        - 'delete canvas_page'
-        - 'view editoria11y checker'
-        - 'mark as hidden in editoria11y'
-        - 'manage editoria11y results'
-        - 'access media overview'
-        - 'create media'
-        - 'update any media'
-        - 'delete any media'
-        - 'administer menu'
-        - 'administer users'
-        - 'assign roles'
-        - 'administer site configuration'
-        - 'administer modules'
-        - 'access site reports'
-        - 'access admin audit trail'
-        - 'access contextual links'
-        - 'administer webform'
-        - 'access webform overview'
-        - 'administer klaro'
-        - 'administer url aliases'
-        - 'administer redirects'
-        - 'administer taxonomy'
 
     # Sidebar: put Add features, Content, Automation and People on the first
     # level. A recipe can run an action only once per config name, so the
