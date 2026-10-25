@@ -8,6 +8,36 @@ demo content, an editorial workflow, ready-made roles and cookie consent.
 Use **Seeds template** for a lean starting point that developers build on. Use **Seeds site**
 when the people running the site should be able to start right away.
 
+## What it installs
+
+### Recipes
+
+| Recipe | Why |
+|---|---|
+| [Seeds template](https://github.com/AhmedAldeek03/seeds_template) | The Seeds foundation (Seeds base) and every Seeds feature recipe, ready in *Extend > Browse*. |
+| [Media center (Seeds)](https://github.com/AhmedAldeek03/media_center_seeds) | News and Events. |
+| [Contact form](https://github.com/AhmedAldeek03/contact_form_recipe) | The Contact us page (Webform). |
+| Easy Email Express | HTML versions of every core email. |
+| Basic block type (core) | The block type used for the Getting started box. |
+| Administrator role (core) | An Administrator role with every permission. |
+
+### Modules and themes
+
+These come on top of what Seeds template already installs.
+
+| Purpose | Modules |
+|---|---|
+| Look | Seeds site theme (default front-end theme) |
+| Dashboards and login redirect | Dashboard, ECA (`eca`, `eca_base`, `eca_user`) |
+| Editorial workflow | Content Moderation, Workflows, Scheduler Content Moderation Integration |
+| Cookie consent | Klaro |
+| Accessibility checker | Editoria11y |
+| Site search | Search API, Search API Database |
+| Audit log | Admin Audit Trail, with its Auth, Media, Menu, Node, Taxonomy and User sub-modules |
+| Visual pages | Canvas, Block |
+| Menus, page addresses and redirects | Menu UI, Menu link content, Pathauto, Redirect |
+| Lists and bulk actions | Views, Views UI, Views Bulk Operations |
+
 ## What you get
 
 ### Pages and menus
