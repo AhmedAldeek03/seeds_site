@@ -143,8 +143,12 @@ And install:
 
 ```bash
 drush site:install ../recipes/seeds_site --account-name=admin --account-pass=admin --site-name="My site"
+drush cache:rebuild
 drush search-api:index
 ```
+
+Clear the caches right after installing: a fresh install can leave a stale entity type cache, and
+the next recipe you apply (an add-on) then fails with "The workflow entity type does not exist".
 
 This logs in as **admin / admin**. Change the password on any site that is not local.
 
