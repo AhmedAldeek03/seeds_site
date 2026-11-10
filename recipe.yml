@@ -108,10 +108,15 @@ config:
     # Seeds template's generic dashboard: the Admin and Editor dashboards replace it.
     dashboard.dashboard.seeds:
       disable: []
-    # The Seeds site theme is the front-end theme.
+    # The Seeds site theme is the front-end theme. Its brand colours, font,
+    # header button, contact details and social links are set at
+    # Appearance > Settings > Seeds site theme.
     system.theme:
       simpleConfigUpdate:
         default: seeds_site_theme
+    seeds_site_theme.settings:
+      simpleConfigUpdate:
+        footer.about: 'We work with families, schools and local partners to open doors to education, health and opportunity.'
 
     # Cookie consent: show the notice on the first visit, and a button to
     # change the choice later.

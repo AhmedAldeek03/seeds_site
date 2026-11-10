@@ -78,16 +78,18 @@ reCAPTCHA) and performance modules.
 
 | Page | Address | Built with |
 |---|---|---|
-| Home | `/` (alias `/home`) | Canvas page: hero, highlights, latest news, upcoming events, call to action |
-| Media center | `/media-center` | Canvas page: latest news, upcoming events, links to all news and events |
+| Home | `/` (alias `/home`) | Canvas page: hero, three features, key figures, latest news, upcoming events, call to action |
+| Media center | `/media-center` | Canvas page: hero with links to all news and events, latest news, upcoming events, call to action |
 | News | `/media-center/news` | View `seeds_site_news` |
 | Events | `/media-center/events` | View `seeds_site_events` (upcoming only) |
 | Contact us | `/contact-us` | Webform from the Contact form recipe |
 | Search | `/search` | Search API with a database server |
 
 Header menu: **Home**, **Media center** (News, Events), **Contact us**. *Media center* is a
-link to its own page, and its dropdown opens on hover. Footer menu: News,
-Events, Search, Contact us.
+link to its own page; its submenu opens as a full-width panel on hover or with the arrow button
+next to it, and shows each link's description (the menu link's *Description* field). The
+header also has a search button. Footer menu (*Quick links*): News, Events, Search, Contact us.
+Pages other than the home page show a breadcrumb above their title.
 
 ### Demo content
 
@@ -104,7 +106,7 @@ Three News items, three Events, six images and three tags, all created by the bl
 | Dashboards | **Admin dashboard** (`/admin/dashboard/admin`): Getting started steps, content waiting for review, recent content, site status and new users. **Editor dashboard** (`/admin/dashboard/editor`): the editor's drafts, content waiting for review, quick links and content they edited recently. |
 | Login redirect | The ECA model *Seeds site: open the right dashboard after login* sends people to their dashboard. Anyone who can view the Admin dashboard (Administrators) goes there, even if they also have the Editor role. Editors go to the Editor dashboard. A login link with its own `?destination=` and password-reset links are left alone. |
 | Sidebar | *Add features*, *Content*, *Automation* (ECA) and *People* on the first level. Editable at Configuration > User interface > Seeds Toolbar. |
-| Visual pages | Canvas, with three Seeds site components (Hero, Highlights, Call to action) plus the Seeds UI components and the News and Events blocks. |
+| Visual pages | Canvas, with the Seeds site theme's sections (Hero, Section, Feature, Key figure, Image and text, Testimonial, Call to action, Button), the Seeds UI components and the News and Events blocks. A Hero at the top of a page replaces the page title. |
 | Accessibility checker | Editoria11y highlights issues while editing. |
 | Help text | Short tips on the page URL, summary, SEO and date fields. |
 | HTML emails | Easy Email Express replaces every core email with an HTML version. |
@@ -116,7 +118,7 @@ Three News items, three Events, six images and three tags, all created by the bl
 | Feature | Details |
 |---|---|
 | Cookie consent | Klaro shows a notice on the first visit and a button to change the choice later. It is off on `/admin` and `/canvas`. Replace it with the Seeds solution once that is ready. |
-| Site styles | The [Seeds site theme](https://github.com/AhmedAldeek03/seeds_site_theme), a Seeds UI subtheme, is the front-end theme. It adds a light stylesheet (header, menu, cards, forms, footer) and keeps parent menu items like *Media center* clickable. Change the look in the theme's `css/site.css`. |
+| Site styles | The [Seeds site theme](https://github.com/AhmedAldeek03/seeds_site_theme), a Seeds UI subtheme, is the front-end theme. Site owners set the brand colours, font, corners, header button, contact details and social links at **Appearance > Settings > Seeds site theme**, without code. It styles every Seeds feature recipe and supports Arabic (right to left). |
 | No author lines | News and Events don't show "By author, date". |
 
 ## Install
@@ -139,9 +141,11 @@ $settings['testing_package_manager'] = TRUE;
 And install:
 
 ```bash
-drush site:install ../recipes/seeds_site --account-name=admin --site-name="My site"
+drush site:install ../recipes/seeds_site --account-name=admin --account-pass=admin --site-name="My site"
 drush search-api:index
 ```
+
+This logs in as **admin / admin**. Change the password on any site that is not local.
 
 ### Required patches
 
@@ -175,7 +179,10 @@ dependencies; one of them (for Yoast SEO) no longer applies.
   Plugin Pack's Restricted Editing sub-module would crash every page, and Seeds Page (offered as
   an add-on) and Button Formatter would break only their own settings form. None of them is
   on by default.
-- **The header has no search box.** Search is linked from the footer.
+- **The demo home page hero has no image.** A Canvas page in the demo content that references
+  a media item leaves a stale entity type cache after installing: every page shows an error
+  ("The redirect entity type does not exist") until the caches are cleared. Add an image to
+  the hero in Canvas after installing.
 
 ## Dashboards and login redirect
 

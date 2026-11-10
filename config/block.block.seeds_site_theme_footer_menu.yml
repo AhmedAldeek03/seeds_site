@@ -15,8 +15,8 @@ provider: null
 plugin: 'system_menu_block:footer'
 settings:
   id: 'system_menu_block:footer'
-  label: ''
-  label_display: '0'
+  label: 'Quick links'
+  label_display: visible
   provider: system
   level: 1
   depth: 1

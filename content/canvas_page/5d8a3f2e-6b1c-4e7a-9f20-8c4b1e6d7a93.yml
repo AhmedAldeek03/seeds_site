@@ -20,35 +20,64 @@ default:
       value: 'Our latest news and upcoming events. Edit it in Canvas.'
   components:
     -
-      uuid: 1a7c9e42-3b5d-4f8a-a6e1-2d9c0b4f7e15
-      component_id: js.seeds_site_hero
+      uuid: cf82afb1-4366-4590-9bca-3b0b723d20d1
+      component_id: sdc.seeds_site_theme.seeds_site_hero
       inputs:
+        eyebrow: 'Media center'
         heading: 'Stories from our work'
         text: 'News, announcements and the events where you can meet us.'
-        buttonText: 'All news'
-        buttonUrl: /media-center/news
+        button_text: 'All news'
+        button_url: /media-center/news
+        secondary_text: 'All events'
+        secondary_url: /media-center/events
+        layout: centered
+        tone: light
+        page_heading: true
     -
-      uuid: 6e2b8d14-9c3f-4a7e-b5d0-7f1a3c8e2b46
+      uuid: 33d89a93-4a89-49b9-b7f9-9bbc4a10935f
+      component_id: sdc.seeds_site_theme.seeds_site_section
+      inputs:
+        heading: 'Latest news'
+        layout: stack
+        tone: white
+        align: start
+        width: default
+    -
+      parent_uuid: 33d89a93-4a89-49b9-b7f9-9bbc4a10935f
+      slot: content
+      uuid: 7cdc46ef-94a6-4815-90e3-47fe6f8ea046
       component_id: block.views_block.news-block_home
       inputs:
-        label: 'Latest news'
-        label_display: visible
+        label: ''
+        label_display: '0'
         views_label: ''
     -
-      uuid: 9f4d2a68-1e7b-4c5a-8d3f-0b6e9a2c4d71
+      uuid: 6b056ec9-bced-4639-9ca0-23f4251c4456
+      component_id: sdc.seeds_site_theme.seeds_site_section
+      inputs:
+        heading: 'Upcoming events'
+        layout: stack
+        tone: light
+        align: start
+        width: default
+    -
+      parent_uuid: 6b056ec9-bced-4639-9ca0-23f4251c4456
+      slot: content
+      uuid: 05aac0eb-4e84-4cee-9a3a-88212d04558e
       component_id: block.views_block.events-block_home
       inputs:
-        label: 'Upcoming events'
-        label_display: visible
+        label: ''
+        label_display: '0'
         views_label: ''
     -
-      uuid: 3c8e1f57-7a2d-4b9e-9e64-5d0b2f8a1c39
-      component_id: js.seeds_site_cta
+      uuid: 6ad3d044-771b-42e5-bd43-909132ff617a
+      component_id: sdc.seeds_site_theme.seeds_site_cta
       inputs:
         heading: 'Join us at our next event'
         text: 'Open days, workshops and dinners: see everything coming up.'
-        buttonText: 'All events'
-        buttonUrl: /media-center/events
+        button_text: 'All events'
+        button_url: /media-center/events
+        tone: dark
   path:
     -
       alias: /media-center
@@ -56,3 +85,6 @@ default:
   revision_translation_affected:
     -
       value: true
+  metatags:
+    -
+      value: '{"canonical_url":"[canvas_page:url]","description":"[canvas_page:description]","image_src":"[canvas_page:image:entity:field_media_image:entity:url]","title":"[canvas_page:title] | [site:name]"}'
