@@ -34,7 +34,7 @@ install:
   - search_api
   - search_api_db
   # Deleted content, media, tags and Canvas pages go to a trash first and can
-  # be restored. Needs Seeds Layouts to be uninstalled (see README).
+  # be restored.
   - trash
   # Who changed what and when.
   - admin_audit_trail
@@ -95,12 +95,9 @@ config:
         auto_purge:
           enabled: true
           after: '30 days'
-    # Seeds template deletes a media item's file straight away. With Trash the
-    # media item can come back, so keep the file; once the item is purged, core
-    # marks the unused file temporary and cron removes it.
-    media_file_delete.settings:
-      simpleConfigUpdate:
-        delete_file_default: false
+    # With Trash a deleted media item can come back, so its file stays; once
+    # the item is purged, core marks the unused file temporary and cron
+    # removes it.
     file.settings:
       simpleConfigUpdate:
         make_unused_managed_files_temporary: true

@@ -43,27 +43,26 @@ These come on top of what Seeds template already installs.
 
 Seeds site doesn't install these itself; they come with
 [Seeds template](https://github.com/AhmedAldeek03/seeds_template). Some are installed but not yet
-switched on for anything, as the last column shows.
+switched on for anything, as the last column shows. Autosave Form, Media File Delete, SAM, Tagify
+and Media Library Bulk Upload were tested and left out (they broke uploads, clashed with Trash, hid
+typed links, broke in Arabic, or are barely maintained).
 
 **Editor helpers**
 
 | Module | What it does | On a fresh Seeds site |
 |---|---|---|
-| Autosave Form | Saves the edit form every minute, and offers to restore it after a crash or reload. | Works |
-| SAM (Simple Add More) | Shows one empty row for fields that take several values, with an *Add another item* button, instead of many empty rows. | Works |
 | Login with email or username | People can log in with either. | Works |
-| Media File Delete | Lets editors delete a media item's file along with it. | Seeds site turns its "delete the file" default off, because Trash keeps deleted media restorable (see Trash below) |
 | Media Library Edit | Edit a media item from inside the media library. | Works |
 | Length Indicator | Shows how many characters are left. | Works on the title, SEO title and SEO description of News and Events |
-| Tagify | Tag-style autocomplete with pills. | Installed; no field uses it (Tags use a select list) |
-| Media Library Bulk Upload | Upload many images at once. | Installed; no media type is set up for it |
-| SVG Image | Lets image fields accept SVG files. | Installed; Image media doesn't allow `.svg` |
+| SVG Image | Shows SVG files (logos, icons) at their own size. | Works: Image media accept SVG and WebP |
 | Scheduler | Publish or unpublish content at a set date. | Installed; not enabled on News or Events |
 
 **SEO**: Seeds SEO, Metatag (with Open Graph), Yoast SEO, Simple XML Sitemap, Redirect, Easy
-Breadcrumb, Responsive Image Preload.
+Breadcrumb.
 
-**Site building and admin**: Seeds Layouts, Seeds Administration, the ECA Modeler and the other
+**Images**: Responsive Image (WebP image styles for cards, full pages and logos), SVG Image.
+
+**Site building and admin**: Seeds Administration, the ECA Modeler and the other
 ECA sub-modules, Project Browser and Package Manager (*Add features*), Field UI, Token OR,
 Config Language Lock.
 
@@ -78,7 +77,7 @@ reCAPTCHA) and performance modules.
 
 | Page | Address | Built with |
 |---|---|---|
-| Home | `/` (alias `/home`) | Canvas page: hero, three features, key figures, latest news, upcoming events, call to action |
+| Home | `/` (alias `/home`) | Canvas page: hero, three features, key figures, latest news and upcoming events (card carousels), call to action |
 | Media center | `/media-center` | Canvas page: hero with links to all news and events, latest news, upcoming events, call to action |
 | News | `/media-center/news` | View `seeds_site_news` |
 | Events | `/media-center/events` | View `seeds_site_events` (upcoming only) |
@@ -87,8 +86,10 @@ reCAPTCHA) and performance modules.
 
 Header menu: **Home**, **Media center** (News, Events), **Contact us**. *Media center* is a
 link to its own page; its submenu opens as a full-width panel on hover or with the arrow button
-next to it, and shows each link's description (the menu link's *Description* field). The
-header also has a search button. Footer menu (*Quick links*): News, Events, Search, Contact us.
+next to it, and shows each link's description (the menu link's *Description* field) and, if
+set, a promo card (the menu link's *Promo card* fields: image, label and link). The header also
+has a search button. Footer menu (*Quick links*): News, Events, Search, Contact us; nest links
+under parent links to show the footer menu as columns with headings.
 Pages other than the home page show a breadcrumb above their title.
 
 ### Demo content
@@ -107,7 +108,7 @@ Three News items, three Events, six images and three tags, all created by the bl
 | Dashboards | **Admin dashboard** (`/admin/dashboard/admin`): Getting started steps, content waiting for review, recent content, site status and new users. **Editor dashboard** (`/admin/dashboard/editor`): the editor's drafts, content waiting for review, quick links and content they edited recently. |
 | Login redirect | The ECA model *Seeds site: open the right dashboard after login* sends people to their dashboard. Anyone who can view the Admin dashboard (Administrators) goes there, even if they also have the Editor role. Editors go to the Editor dashboard. A login link with its own `?destination=` and password-reset links are left alone. |
 | Sidebar | *Add features*, *Content*, *Automation* (ECA) and *People* on the first level. Editable at Configuration > User interface > Seeds Toolbar. |
-| Visual pages | Canvas, with the Seeds site theme's sections (Hero, Section, Feature, Key figure, Image and text, Testimonial, Call to action, Button), the Seeds UI components and the News and Events blocks. A Hero at the top of a page replaces the page title. |
+| Visual pages | Canvas, with the Seeds site theme's sections (Hero, Section, Feature, Key figure, Image and text, Message, Milestone, Testimonial, Call to action, Button), the Seeds UI components and the News and Events blocks. A Hero at the top of a page replaces the page title; Image and text without an image is a single column of text. |
 | Accessibility checker | Editoria11y highlights issues while editing. |
 | Help text | Short tips on the page URL, summary, SEO and date fields. |
 | HTML emails | Easy Email Express replaces every core email with an HTML version. |
@@ -119,7 +120,7 @@ Three News items, three Events, six images and three tags, all created by the bl
 | Feature | Details |
 |---|---|
 | Cookie consent | Klaro shows a notice on the first visit and a button to change the choice later. It is off on `/admin` and `/canvas`. Replace it with the Seeds solution once that is ready. |
-| Site styles | The [Seeds site theme](https://github.com/AhmedAldeek03/seeds_site_theme), a Seeds UI subtheme, is the front-end theme. Site owners set the brand colours, font, corners, header button, contact details and social links at **Appearance > Settings > Seeds site theme**, without code. It styles every Seeds feature recipe and supports Arabic (right to left). |
+| Site styles | The [Seeds site theme](https://github.com/AhmedAldeek03/seeds_site_theme), a Seeds UI subtheme, is the front-end theme. Site owners set the brand colours, font (five self-hosted fonts for Arabic and English), corners, header button, contact details, social links and footer background at **Appearance > Settings > Seeds site theme**, without code. It styles every Seeds feature recipe and supports Arabic (right to left). |
 | No author lines | News and Events don't show "By author, date". |
 
 ## Install
