@@ -4,6 +4,7 @@ _meta:
   uuid: 2b126d80-311d-4543-b7a5-560f2c4af6fb
   default_langcode: en
   depends:
+    dfb4ef61-6836-48c1-b1b6-011130d6536c: media
     afed08b1-7f16-45ed-8cbc-10f1026a23c6: user
 default:
   status:
@@ -30,6 +31,10 @@ default:
         button_url: /contact-us
         secondary_text: 'See our work'
         secondary_url: /media-center
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: dfb4ef61-6836-48c1-b1b6-011130d6536c
+            target_type: media
         layout: split
         tone: light
         page_heading: true

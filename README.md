@@ -95,7 +95,8 @@ Pages other than the home page show a breadcrumb above their title.
 
 Three News items, three Events, six images and three tags, all created by the blocked
 `demo_content` user. Remove them in one go at **Content > Demo content** and
-**Content > Demo media** (select all, *Delete*). The home page and the menus stay.
+**Content > Demo media** (select all, *Delete*). The home page, its hero image (the
+*Home page hero* media item, not part of the demo content) and the menus stay.
 
 ### For editors
 
@@ -176,13 +177,8 @@ dependencies; one of them (for Yoast SEO) no longer applies.
 - **Seeds Layouts can't be turned on.** It type-hints the concrete `EntityTypeManager` class,
   and Trash replaces that service, so the site crashes. Seeds template no longer installs it;
   use Canvas for page layouts. Three other modules have the same type hint: the CKEditor 5
-  Plugin Pack's Restricted Editing sub-module would crash every page, and Seeds Page (offered as
-  an add-on) and Button Formatter would break only their own settings form. None of them is
-  on by default.
-- **The demo home page hero has no image.** A Canvas page in the demo content that references
-  a media item leaves a stale entity type cache after installing: every page shows an error
-  ("The redirect entity type does not exist") until the caches are cleared. Add an image to
-  the hero in Canvas after installing.
+  Plugin Pack's Restricted Editing sub-module would crash every page, and Button Formatter
+  would break only its own settings form. Neither is on by default.
 
 ## Dashboards and login redirect
 

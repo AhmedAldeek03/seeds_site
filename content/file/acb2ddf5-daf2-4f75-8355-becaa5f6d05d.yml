@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: acb2ddf5-daf2-4f75-8355-becaa5f6d05d
+  default_langcode: en
+default:
+  filename:
+    -
+      value: home-hero.jpg
+  uri:
+    -
+      value: 'public://seeds-site/home-hero.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 33090
+  status:
+    -
+      value: true

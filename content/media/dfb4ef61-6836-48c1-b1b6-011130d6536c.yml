@@ -1,0 +1,25 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: dfb4ef61-6836-48c1-b1b6-011130d6536c
+  bundle: image
+  default_langcode: en
+  depends:
+    acb2ddf5-daf2-4f75-8355-becaa5f6d05d: file
+default:
+  status:
+  - value: true
+  name:
+  - value: 'Home page hero'
+  field_image:
+  - alt: 'Abstract shapes in the site colours'
+    title: ''
+    width: 1600
+    height: 1200
+    entity: acb2ddf5-daf2-4f75-8355-becaa5f6d05d
+  field_media_image:
+  - alt: 'Abstract shapes in the site colours'
+    title: ''
+    width: 1600
+    height: 1200
+    entity: acb2ddf5-daf2-4f75-8355-becaa5f6d05d
